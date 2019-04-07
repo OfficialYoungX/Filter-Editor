@@ -1,9 +1,9 @@
 <template>
-    <div id="app" :class="{'app__background--uploaded': isUpload}">
+    <div id="app" :class="{'app__background--uploaded': true}">
         <div class="upload-wrapper">
             <Uploader :filterValue="controlVal" @on-upload="handleOnUpload"/>
         </div>
-        <div class="controler-wrapper">
+        <div class="controler-wrapper" >
             <ControlSlide @on-control="handleOnControl"/>
         </div>
     </div>
@@ -22,7 +22,8 @@ export default {
     data() {
         return {
             isUpload: false,
-            controlVal: 0
+            controlVal: 0,
+            isHovered: false
         };
     },
     methods: {
@@ -32,6 +33,12 @@ export default {
         handleOnControl(val) {
             console.log(`Vue:${val}`);
             this.controlVal = val;
+        },
+        handleMouseover() {
+            this.isHovered = true;
+        },
+        handleMouseout() {
+            this.isHovered = false;
         }
     }
 };
@@ -62,14 +69,14 @@ body {
 
     width: 100%;
     height: 100%;
+
     display: flex;
-    // align-items: center;
     justify-content: space-between;
 
     overflow: hidden;
 }
 .app__background--uploaded {
-	transition: background 0.6s linear;
+    transition: background 0.6s linear;
     background: $black;
 }
 .upload-wrapper {
@@ -83,14 +90,27 @@ body {
 .controler-wrapper {
     width: 20rem;
     margin: 1rem;
-    box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.249);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     overflow-y: scroll;
     background: $white;
-}
 
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translate(80%);
+    opacity: 0.3;
+
+    // hide the scroll bar
+    &::-webkit-scrollbar {
+        width: 0 !important;
+    }
+    // hover status
+    &:hover{
+        transform: translate(0);
+        opacity: 1;
+    }
+}
 .controler-wrapper,
 .upload-wrapper {
-    border-radius: 10px;
+    border-radius: 4px;
 }
 </style>

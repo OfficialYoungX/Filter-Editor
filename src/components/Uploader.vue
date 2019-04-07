@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import { constants } from 'crypto';
 export default {
     props: {
         filterValue: {
@@ -66,7 +65,7 @@ export default {
              opacity(${filters.opacity}%) 
              brightness(${filters.brightness / 100}) 
              contrast(${filters.contrast}%) 
-             blur(${filters.blur}px)`
+             blur(${filters.blur}px)`;
             // return '';
         }
     },
