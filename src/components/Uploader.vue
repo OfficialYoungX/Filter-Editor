@@ -1,5 +1,5 @@
 <template>
-    <div class="uploader-wrapper">
+    <div class="uploader-wrapper" @paste="handleOnpaste">
         <el-upload
             :drag="true"
             :action="actionURL"
@@ -16,8 +16,9 @@
         </el-upload>
         <!-- stketch board -->
         <img
+            class="unploader__sketch-board"
             v-show="isUpload"
-            :style="{width:`100vmin`, filter: `${filterParameter}`}"
+            :style="{filter: `${filterParameter}`}"
             :src="imageURL"
         >
     </div>
@@ -66,14 +67,34 @@ export default {
              brightness(${filters.brightness / 100}) 
              contrast(${filters.contrast}%) 
              blur(${filters.blur}px)`;
-            // return '';
         }
     },
     methods: {
-        handleOnChange(file, fileList) {
+        handleOnChange(file) {
             this.imageURL = window.URL.createObjectURL(file.raw);
+            // console.log(file.raw);
             this.isUpload = true;
             this.$emit("on-upload", true);
+        },
+        /**
+         * @param {EventObj} e
+         */
+        getImageURLFromPaste(e) {
+            try{
+                if(!(e.clipboardData && e.clipboardData.items)) {
+                    throw new Error('Paste Fail');
+                }
+            }catch (e){
+                return;
+            }
+            // 只取最近的一个文件
+            const imageRaw = e.clipboardData.items[0].getAsFile(); // 得到粘贴板上的图片的缓存路径
+            const imageURL = URL.createObjectURL(imageRaw); // 通过缓存路径创建图片引用
+            return imageURL;
+        },
+        handleOnpaste(e) {
+            this.imageURL = this.getImageURLFromPaste(e);
+            this.isUpload = true;
         }
     }
 };
@@ -88,6 +109,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.unploader__sketch-board {
+    width: 100vmin;
+    // object-fit: contain;
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
 }
 </style>
 

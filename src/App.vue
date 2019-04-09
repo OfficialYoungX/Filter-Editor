@@ -1,10 +1,18 @@
 <template>
-    <div id="app" :class="{'app__background--uploaded': true}">
-        <div class="upload-wrapper">
-            <Uploader :filterValue="controlVal" @on-upload="handleOnUpload"/>
+    <div id="app">
+        <div class="app__head">
+            <img class="head__logo" src="./assets/logo.svg" alt="logo">
+            <h1 class="head__title">
+                Css Filter Editor
+            </h1>
         </div>
-        <div class="controler-wrapper" >
-            <ControlSlide @on-control="handleOnControl"/>
+        <div class="workshop-wrapper">
+            <div class="upload-wrapper">
+                <Uploader :filterValue="controlVal" @on-upload="handleOnUpload"/>
+            </div>
+            <div class="controler-wrapper">
+                <ControlSlide @on-control="handleOnControl"/>
+            </div>
         </div>
     </div>
 </template>
@@ -31,7 +39,6 @@ export default {
             this.isUpload = true;
         },
         handleOnControl(val) {
-            console.log(`Vue:${val}`);
             this.controlVal = val;
         },
         handleMouseover() {
@@ -65,22 +72,43 @@ body {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-
+    color: $black;
     width: 100%;
     height: 100%;
 
-    display: flex;
-    justify-content: space-between;
-
     overflow: hidden;
 }
-.app__background--uploaded {
-    transition: background 0.6s linear;
-    background: $black;
+
+.app__head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1);
+    z-index: 10;
+    background: $white;
+    .head__logo {
+        display: inline-block;
+        width: 3.5rem;
+        margin: 0 1.3rem;
+    }
+    .head__title {
+        text-align: center;
+        font-weight: lighter;
+    }
 }
+
+.workshop-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .upload-wrapper {
-    width: calc(100% - 24rem);
+    width: 100%;
+    height: 100%;
     margin: 1rem;
 
     display: flex;
@@ -88,29 +116,29 @@ body {
     align-items: center;
 }
 .controler-wrapper {
-    width: 20rem;
+    width: 24rem;
     margin: 1rem;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    margin-top: 6.5rem;
+    margin-right: 0;
+    box-shadow: -2px -2px 10px 0px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     overflow-y: scroll;
     background: $white;
 
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     transform: translate(80%);
-    opacity: 0.3;
+    // opacity: 0.3;
+
+    border-radius: 4px 0 0 4px;
 
     // hide the scroll bar
     &::-webkit-scrollbar {
         width: 0 !important;
     }
     // hover status
-    &:hover{
+    &:hover {
         transform: translate(0);
         opacity: 1;
     }
-}
-.controler-wrapper,
-.upload-wrapper {
-    border-radius: 4px;
 }
 </style>

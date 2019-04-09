@@ -19,7 +19,6 @@ export default {
     },
     methods: {
         handleOnInput(val) {
-            console.log(`ControlSlide:${val}`);
             this.$emit("on-control", val);
         }
     }
@@ -28,6 +27,6 @@ export default {
 
 <style lang="scss" scoped>
 .controler-slide {
-    padding: 1rem 1.5rem;
+    padding: 1rem 2.5rem;
 }
 </style>
