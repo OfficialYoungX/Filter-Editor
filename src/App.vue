@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="app__head">
-            <img class="head__logo" src="./assets/logo.svg" alt="logo">
+            <img class="head__logo" src="./assets/logo.png" alt="logo">
             <h1 class="head__title">
                 Css Filter Editor
             </h1>
@@ -89,10 +89,11 @@ body {
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1);
     z-index: 10;
     background: $white;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     .head__logo {
         display: inline-block;
-        width: 3.5rem;
-        margin: 0 1.3rem;
+        height: 2.5rem;
     }
     .head__title {
         text-align: center;
@@ -125,21 +126,11 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     background: $white;
-
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    transform: translate(80%);
-    // opacity: 0.3;
-
     border-radius: 4px 0 0 4px;
 
     // hide the scroll bar
     &::-webkit-scrollbar {
         width: 0 !important;
-    }
-    // hover status
-    &:hover {
-        transform: translate(0);
-        opacity: 1;
     }
 }
 </style>

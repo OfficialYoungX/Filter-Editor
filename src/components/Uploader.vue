@@ -16,7 +16,7 @@
         </el-upload>
         <!-- stketch board -->
         <img
-            class="unploader__sketch-board"
+            class="uploader__sketch-board"
             v-show="isUpload"
             :style="{filter: `${filterParameter}`}"
             :src="imageURL"
@@ -76,9 +76,6 @@ export default {
             this.isUpload = true;
             this.$emit("on-upload", true);
         },
-        /**
-         * @param {EventObj} e
-         */
         getImageURLFromPaste(e) {
             try{
                 if(!(e.clipboardData && e.clipboardData.items)) {
@@ -111,7 +108,7 @@ export default {
     align-items: center;
 }
 
-.unploader__sketch-board {
+.uploader__sketch-board {
     width: 100vmin;
     // object-fit: contain;
     box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
