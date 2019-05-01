@@ -30,8 +30,9 @@ export default {
     data() {
         return {
             isUpload: false,
-            controlVal: 0,
-            isHovered: false
+            controlVal: [],
+            isHovered: false,
+            notUse: 'old'
         };
     },
     methods: {
