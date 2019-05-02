@@ -10,7 +10,7 @@ export default {
     props: {
         text: {
 			type: String,
-            default: "text"
+            default: "FilterName"
 		},
 		initValue: {
 			type: Number,
@@ -26,7 +26,8 @@ export default {
     methods: {
         handleOnInput() {
             console.log(`${this.value}\t Controler-${this.text}`);
-            this.$emit("on-input", [this.value, this.labelText]);
+            // update the filter value state.
+            this.$root.store.updateFilterVal(this.text, this.value);
         }
     }
 };

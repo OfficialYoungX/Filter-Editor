@@ -18,7 +18,7 @@
         <img
             class="uploader__sketch-board"
             v-show="isUpload"
-            :style="{filter: `${filterParameter}`}"
+            :style="{filter: `${CSSFilterVal}`}"
             :src="imageURL"
         >
     </div>
@@ -27,17 +27,9 @@
 <script>
 export default {
     props: {
-        filterValue: {
-            type: Array,
-            default: () => []
-        }
-    },
-    data() {
-        return {
-            actionURL: "https://jsonplaceholder.typicode.com/posts/",
-            imageURL: "",
-            isUpload: false,
-            filters: {
+        filters: {
+            type: Object,
+            default: () => ({
                 grayscale: 0,
                 sepia: 0,
                 saturate: 100,
@@ -47,16 +39,18 @@ export default {
                 brightness: 100,
                 contrast: 100,
                 blur: 0
-            }
-        };
-    },
-    watch: {
-        filterValue: function() {
-            this.filters[this.filterValue[1]] = this.filterValue[0];
+            })
         }
     },
+    data() {
+        return {
+            actionURL: "https://jsonplaceholder.typicode.com/posts/",
+            imageURL: "",
+            isUpload: false,
+        };
+    },
     computed: {
-        filterParameter() {
+        CSSFilterVal() {
             const filters = this.filters;
             return `grayscale(${filters.grayscale}%)
              sepia(${filters.sepia}%) 
@@ -72,7 +66,6 @@ export default {
     methods: {
         handleOnChange(file) {
             this.imageURL = window.URL.createObjectURL(file.raw);
-            // console.log(file.raw);
             this.isUpload = true;
             this.$emit("on-upload", true);
         },

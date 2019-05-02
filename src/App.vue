@@ -8,7 +8,7 @@
         </div>
         <div class="workshop-wrapper">
             <div class="upload-wrapper">
-                <Uploader :filterValue="controlVal" @on-upload="handleOnUpload"/>
+                <Uploader :filters="controlVal" @on-upload="handleOnUpload"/>
             </div>
             <div class="controler-wrapper">
                 <ControlSlide @on-control="handleOnControl"/>
@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             isUpload: false,
-            controlVal: [],
+            controlVal: this.$root.store.state.filters,
             isHovered: false
         };
     },
@@ -94,7 +94,7 @@ body {
     padding-bottom: 1.5rem;
     .head__logo {
         display: inline-block;
-        height: 4rem;
+        height: 2.5rem;
     }
     .head__title {
         text-align: center;
