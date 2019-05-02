@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'controler-slide': true}" >
+    <div class = 'controler-slide' >
         <Controler v-for="(filter, index) in filters" :text="filter[0]" :initValue="filter[1]" :key="index"  @on-input="handleOnInput"/>
     </div>
 </template>

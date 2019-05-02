@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         handleOnInput() {
-            console.log(`Controler:${this.value}`);
+            console.log(`${this.value}\t Controler-${this.text}`);
             this.$emit("on-input", [this.value, this.labelText]);
         }
     }

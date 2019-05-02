@@ -21,6 +21,8 @@
 import ControlSlide from "./components/ControlSlide";
 import Uploader from "./components/Uploader";
 
+
+
 export default {
     name: "app",
     components: {
@@ -31,8 +33,7 @@ export default {
         return {
             isUpload: false,
             controlVal: [],
-            isHovered: false,
-            notUse: 'old'
+            isHovered: false
         };
     },
     methods: {
