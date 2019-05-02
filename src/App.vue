@@ -1,10 +1,10 @@
 <template>
     <div id="app">
         <div class="app__head">
-            <img class="head__logo" src="./assets/logo.png" alt="logo">
-            <h1 class="head__title">
-                Css Filter Editor
-            </h1>
+            <img class="head__logo" src="./assets/logo.svg" alt="logo">
+            <span class="head__title">
+               <strong>Filter Editor</strong> A web filter editor application baseed on CSS-Filter
+            </span>
         </div>
         <div class="workshop-wrapper">
             <div class="upload-wrapper">
@@ -93,11 +93,13 @@ body {
     padding-bottom: 1.5rem;
     .head__logo {
         display: inline-block;
-        height: 2.5rem;
+        height: 4rem;
     }
     .head__title {
         text-align: center;
-        font-weight: lighter;
+        font-weight: normal;
+        color: grey;
+        margin-left: 1.5rem;
     }
 }
 
