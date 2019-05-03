@@ -1,5 +1,5 @@
 <template>
-    <div class="uploader-wrapper" @paste="handleOnpaste">
+    <div class="uploader" @paste="handleOnpaste" @mousewheel="handleOnmouseWheel">
         <el-upload
             :drag="true"
             :action="actionURL"
@@ -18,7 +18,8 @@
         <img
             class="uploader__sketch-board"
             v-show="isUpload"
-            :style="{filter: `${CSSFilterVal}`}"
+            :style="{filter: `${CSSFilterVal}`,
+                    transform: `scale(${scale})`}"
             :src="imageURL"
         >
     </div>
@@ -47,6 +48,7 @@ export default {
             actionURL: "https://jsonplaceholder.typicode.com/posts/",
             imageURL: "",
             isUpload: false,
+            scale: 1
         };
     },
     computed: {
@@ -70,11 +72,11 @@ export default {
             this.$emit("on-upload", true);
         },
         getImageURLFromPaste(e) {
-            try{
-                if(!(e.clipboardData && e.clipboardData.items)) {
-                    throw new Error('Paste Fail');
+            try {
+                if (!(e.clipboardData && e.clipboardData.items)) {
+                    throw new Error("Paste Fail");
                 }
-            }catch (e){
+            } catch (e) {
                 return;
             }
             // 只取最近的一个文件
@@ -85,13 +87,27 @@ export default {
         handleOnpaste(e) {
             this.imageURL = this.getImageURLFromPaste(e);
             this.isUpload = true;
+        },
+        handleOnmouseWheel(e) {
+            this.zoomSketchBoard(e, 1.5);
+        },
+        zoomSketchBoard(e, alpha = 1.1) {
+            let deltaY = e.deltaY;
+            if(deltaY < 0) {
+                this.scale /= alpha;
+            }else {
+                this.scale *= alpha;
+            } 
+            console.log(this.scale);
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.uploader-wrapper {
+@import "../assets/scss/ins/1977.scss";
+
+.uploader {
     width: 100%;
     height: 100%;
     text-align: center;
@@ -99,12 +115,16 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
+    &__sketch-board {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+        @include _1977();
+    }
 }
 
-.uploader__sketch-board {
-    width: 100vmin;
-    // object-fit: contain;
-    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
-}
+// .uploader
 </style>
 

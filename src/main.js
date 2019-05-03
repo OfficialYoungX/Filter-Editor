@@ -11,7 +11,7 @@ new Vue({
     render: h => h(App),
     data() {
         return {
-            store: store
+            store: store // globle store data
         }
     },
 }).$mount('#app')

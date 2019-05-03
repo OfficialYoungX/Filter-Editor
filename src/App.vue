@@ -3,7 +3,9 @@
         <div class="app__head">
             <img class="head__logo" src="./assets/logo.svg" alt="logo">
             <span class="head__title">
-               <strong>Filter Editor</strong> A web filter editor application baseed on CSS-Filter
+               <strong class="head__title--strong">Filter Editor</strong> 
+               A web filter editor application baseed on 
+               <strong>CSS-Filter</strong>
             </span>
         </div>
         <div class="workshop-wrapper">
@@ -54,10 +56,8 @@ export default {
 </script>
 
 <style lang="scss">
-// variable
-$black: #000000;
-$gray: #ececec;
-$white: #ffffff;
+@import './assets/scss/_var.scss';
+@import './assets/scss/_shadow_border.scss';
 
 html {
     width: 100%;
@@ -77,8 +77,6 @@ body {
     color: $black;
     width: 100%;
     height: 100%;
-
-    overflow: hidden;
 }
 
 .app__head {
@@ -87,7 +85,8 @@ body {
     align-items: center;
     position: fixed;
     width: 100%;
-    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1);
+    // box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+    @include shadow-border(0, 2px);
     z-index: 10;
     background: $white;
     padding-top: 1.5rem;
@@ -95,12 +94,24 @@ body {
     .head__logo {
         display: inline-block;
         height: 2.5rem;
+        animation: an_hue_rotate 2s linear forwards infinite;
+        @keyframes an_hue_rotate {
+            from {
+                filter: hue-rotate(0);
+            }
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
     }
     .head__title {
         text-align: center;
         font-weight: normal;
         color: grey;
         margin-left: 1.5rem;
+        .head__title--strong {
+            color: $blue; 
+        }
     }
 }
 
@@ -113,8 +124,10 @@ body {
 
 .upload-wrapper {
     width: 100%;
-    height: 100%;
+    // height: calc(100% - 6.5rem);
     margin: 1rem;
+    margin-top: 6.5rem;
+    @include shadow-border(-5px,5px);
 
     display: flex;
     justify-content: center;
@@ -124,16 +137,16 @@ body {
     width: 24rem;
     margin: 1rem;
     margin-top: 6.5rem;
-    margin-right: 0;
-    box-shadow: -2px -2px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-right: .5rem;
+    @include shadow-border(-5px,5px);
+
     overflow: hidden;
     overflow-y: scroll;
     background: $white;
-    border-radius: 4px 0 0 4px;
 
     // hide the scroll bar
     &::-webkit-scrollbar {
-        width: 0 !important;
+        width: 0px !important;
     }
 }
 </style>
