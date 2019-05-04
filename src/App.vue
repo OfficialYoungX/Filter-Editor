@@ -23,8 +23,6 @@
 import ControlSlide from "./components/ControlSlide";
 import Uploader from "./components/Uploader";
 
-
-
 export default {
     name: "app",
     components: {
@@ -57,7 +55,7 @@ export default {
 
 <style lang="scss">
 @import './assets/scss/_var.scss';
-@import './assets/scss/_shadow_border.scss';
+@import './assets/scss/_shadow-border.scss';
 
 html {
     width: 100%;

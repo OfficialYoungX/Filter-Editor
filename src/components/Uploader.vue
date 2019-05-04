@@ -16,11 +16,10 @@
         </el-upload>
         <!-- stketch board -->
         <img
-            class="uploader__sketch-board"
+            class="uploader__sketch-board inkwell"
             v-show="isUpload"
-            :style="{filter: `${CSSFilterVal}`,
-                    transform: `scale(${scale})`}"
             :src="imageURL"
+            :style="{filter: ``, transform: `scale(${scale})`}"
         >
     </div>
 </template>
@@ -98,6 +97,9 @@ export default {
             }else {
                 this.scale *= alpha;
             } 
+            this.scale = this.scale < 0.01 ? 0.01 : this.scale;
+            this.scale = this.scale > 10 ? 10 : this.scale;
+            // eslint-disable-next-line
             console.log(this.scale);
         }
     }
@@ -105,7 +107,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/ins/1977.scss";
+@import '../assets/scss/ins/cssgram.scss';
 
 .uploader {
     width: 100%;
@@ -121,10 +123,7 @@ export default {
         width: 90%;
         height: 90%;
         object-fit: contain;
-        @include _1977();
     }
 }
-
-// .uploader
 </style>
 
