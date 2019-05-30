@@ -92,15 +92,15 @@ body {
     .head__logo {
         display: inline-block;
         height: 2.5rem;
-        animation: an_hue_rotate 2s linear forwards infinite;
-        @keyframes an_hue_rotate {
-            from {
-                filter: hue-rotate(0);
-            }
-            to {
-                filter: hue-rotate(360deg);
-            }
-        }
+        // animation: an_hue_rotate 2s linear forwards infinite;
+        // @keyframes an_hue_rotate {
+        //     from {
+        //         filter: hue-rotate(0);
+        //     }
+        //     to {
+        //         filter: hue-rotate(360deg);
+        //     }
+        // }
     }
     .head__title {
         text-align: center;
@@ -130,6 +130,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
 }
 .controler-wrapper {
     width: 24rem;

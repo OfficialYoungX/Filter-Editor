@@ -14,6 +14,8 @@
             </div>
             <div class="el-upload__tip" slot="tip">上传 svg / png / jpg / jpeg /...</div>
         </el-upload>
+        <!-- clear button -->
+        <!-- <span style="position: absolute; top:50%; left:20%;">Close X </span> -->
         <!-- stketch board -->
         <img
             class="uploader__sketch-board"
@@ -47,7 +49,8 @@ export default {
             actionURL: "https://jsonplaceholder.typicode.com/posts/",
             imageURL: "",
             isUpload: false,
-            scale: 1
+            scale: 1,
+            
         };
     },
     computed: {
