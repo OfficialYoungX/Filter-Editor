@@ -16,10 +16,10 @@
         </el-upload>
         <!-- stketch board -->
         <img
-            class="uploader__sketch-board inkwell"
+            class="uploader__sketch-board"
             v-show="isUpload"
             :src="imageURL"
-            :style="{filter: ``, transform: `scale(${scale})`}"
+            :style="{filter: CSSFilterVal, transform: `scale(${scale})`}"
         >
     </div>
 </template>
@@ -88,7 +88,7 @@ export default {
             this.isUpload = true;
         },
         handleOnmouseWheel(e) {
-            this.zoomSketchBoard(e, 1.5);
+            this.zoomSketchBoard(e, 1.2);
         },
         zoomSketchBoard(e, alpha = 1.1) {
             let deltaY = e.deltaY;
@@ -125,5 +125,10 @@ export default {
         object-fit: contain;
     }
 }
+
+.uploader__sketch-board{
+    transition: transform 0.2s ease-out;
+}
+
 </style>
 
