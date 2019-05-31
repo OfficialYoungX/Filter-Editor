@@ -57,14 +57,14 @@ export default {
         CSSFilterVal() {
             const filters = this.filters;
             return `grayscale(${filters.grayscale}%)
-             sepia(${filters.sepia}%) 
-             saturate(${filters.saturate}%)
-             hue-rotate(${(filters.hueRotate / 100) * 360}deg) 
-             invert(${filters.invert}%) 
-             opacity(${filters.opacity}%) 
-             brightness(${filters.brightness / 100}) 
-             contrast(${filters.contrast}%) 
-             blur(${filters.blur}px)`;
+                    sepia(${filters.sepia}%) 
+                    saturate(${filters.saturate}%)
+                    hue-rotate(${(filters.hueRotate / 100) * 360}deg) 
+                    invert(${filters.invert}%) 
+                    opacity(${filters.opacity}%) 
+                    brightness(${filters.brightness / 100}) 
+                    contrast(${filters.contrast}%) 
+                    blur(${filters.blur}px)`;
         }
     },
     methods: {
@@ -91,6 +91,7 @@ export default {
             this.isUpload = true;
         },
         handleOnmouseWheel(e) {
+            console.log(this.$store.state);
             this.zoomSketchBoard(e, 1.2);
         },
         zoomSketchBoard(e, alpha = 1.1) {
@@ -99,7 +100,7 @@ export default {
                 this.scale /= alpha;
             }else {
                 this.scale *= alpha;
-            } 
+            }
             this.scale = this.scale < 0.01 ? 0.01 : this.scale;
             this.scale = this.scale > 10 ? 10 : this.scale;
             // eslint-disable-next-line

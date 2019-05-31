@@ -1,3 +1,10 @@
+
+/**
+ * 提供全局的数据store容器
+ * 修改内部数据，是通过触发store内部的action
+ * 进而由内部函数修改
+ * 外部的数据共享者不允许直接修改store中的数据
+ */
 let store = {
     state: {
         filters: {

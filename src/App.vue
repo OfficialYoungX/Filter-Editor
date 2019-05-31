@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             isUpload: false,
-            controlVal: this.$root.store.state.filters,
+            controlVal: this.$store.state.filters,
             isHovered: false
         };
     },
@@ -42,12 +42,6 @@ export default {
         },
         handleOnControl(val) {
             this.controlVal = val;
-        },
-        handleMouseover() {
-            this.isHovered = true;
-        },
-        handleMouseout() {
-            this.isHovered = false;
         }
     }
 };

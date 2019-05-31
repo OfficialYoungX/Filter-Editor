@@ -8,7 +8,7 @@
 <script>
 export default {
     props: {
-        text: {
+        labelText: {
 			type: String,
             default: "FilterName"
 		},
@@ -19,16 +19,16 @@ export default {
     },
     data() {
         return {
-			value: this.initValue,
-			labelText: this.text
-        };
+            value: this.initValue,
+            label: this.labelText
+        }
     },
     methods: {
         handleOnInput() {
             // eslint-disable-next-line
-            console.log(`${this.value}\t Controler-${this.text}`);
+            console.log(`${this.value}\t Controler-${this.label}`);
             // update the filter value state.
-            this.$root.store.updateFilterVal(this.text, this.value);
+            this.$store.commit('updateFilterVal', {filterName: this.label, newVal: this.value});
         }
     }
 };

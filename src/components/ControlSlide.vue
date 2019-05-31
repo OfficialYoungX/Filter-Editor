@@ -1,6 +1,6 @@
 <template>
     <div class = 'controler-slide' >
-        <Controler v-for="(val, name) in filters" :text="name" :initValue="val" :key="name"/>
+        <Controler v-for="(val, name) in filters" :labelText="name" :initValue="val" :key="name"/>
     </div>
 </template>
 
@@ -13,11 +13,9 @@ export default {
     },
     data() {
         return {
-            filters: this.$root.store.state.filters,
+            filters: this.$store.state.filters,
             isHovered: false
         };
-    },
-    methods: {
     }
 };
 </script>
