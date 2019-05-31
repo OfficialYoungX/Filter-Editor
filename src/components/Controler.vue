@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
     props: {
         labelText: {
@@ -24,11 +26,15 @@ export default {
         }
     },
     methods: {
+        ...mapMutations({
+            updateFilterVal: 'updateFilterVal'
+        }),
         handleOnInput() {
             // eslint-disable-next-line
             console.log(`${this.value}\t Controler-${this.label}`);
             // update the filter value state.
-            this.$store.commit('updateFilterVal', {filterName: this.label, newVal: this.value});
+            // this.$store.commit('updateFilterVal', {filterName: this.label, newVal: this.value});
+            this.updateFilterVal({filterName: this.label, newVal: this.value});
         }
     }
 };

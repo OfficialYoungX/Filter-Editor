@@ -91,7 +91,6 @@ export default {
             this.isUpload = true;
         },
         handleOnmouseWheel(e) {
-            console.log(this.$store.state);
             this.zoomSketchBoard(e, 1.2);
         },
         zoomSketchBoard(e, alpha = 1.1) {
