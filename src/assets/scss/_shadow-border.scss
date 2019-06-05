@@ -1,0 +1,4 @@
+@mixin shadow-border($x:5px, $y:5px) {
+    box-shadow: $x $y 0px 0px $blue;
+    border: 2px solid lighten($blue, 20%);
+}
