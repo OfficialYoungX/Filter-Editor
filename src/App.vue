@@ -5,7 +5,7 @@
             <span class="head__title">
                <strong class="head__title--strong">Filter Editor</strong> 
                A web filter editor application baseed on 
-               <strong>CSS-Filter</strong>
+               <strong>CSS Filter</strong>
             </span>
         </div>
         <div class="workshop-wrapper">
@@ -77,8 +77,6 @@ body {
     align-items: center;
     position: fixed;
     width: 100%;
-    // box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
-    @include shadow-border(0, 2px);
     z-index: 10;
     background: $white;
     padding-top: 1.5rem;

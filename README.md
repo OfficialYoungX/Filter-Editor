@@ -1,4 +1,8 @@
-# filter-editor
+![iamge](./text-logo.png)
+
+**Filter Editor**是一个基于`css filter`属性并且极其简单的**滤镜效果合成器**。
+
+可以实时调节参数，效果预览。
 
 ## Project setup
 ```
@@ -15,15 +19,7 @@ yarn run serve
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
 ### Lints and fixes files
 ```
 yarn run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

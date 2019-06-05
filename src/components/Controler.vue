@@ -26,6 +26,9 @@ export default {
         }
     },
     methods: {
+        // 展开运算符
+        // 将mapMutations返回的对象
+        // 添加到当前作用域
         ...mapMutations({
             updateFilterVal: 'updateFilterVal'
         }),
@@ -33,7 +36,6 @@ export default {
             // eslint-disable-next-line
             console.log(`${this.value}\t Controler-${this.label}`);
             // update the filter value state.
-            // this.$store.commit('updateFilterVal', {filterName: this.label, newVal: this.value});
             this.updateFilterVal({filterName: this.label, newVal: this.value});
         }
     }
