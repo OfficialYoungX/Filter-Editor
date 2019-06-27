@@ -25,7 +25,7 @@ const store = new Vuex.Store({
     },
     mutations: {
         updateFilterVal(state ,{filterName, newVal}) {
-            if(!state.filters[filterName] === undefined) throw Error('Wrong filter name!');
+            if(!state.filters[filterName] === undefined) return;
             state.filters[filterName] = newVal;
         }
     }
